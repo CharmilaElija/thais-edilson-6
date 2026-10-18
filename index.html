@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thais & Edilson - 20.04.27</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{--verde:#7a8c6b; --bege:#f8f5f0; --bege-escuro:#f3efea;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bege); display:flex; justify-content:center; font-family:'Cormorant Garamond', serif;}
+.container{width:390px; max-width:100vw; background:var(--bege); position:relative; overflow:hidden; min-height:100vh; box-shadow:0 10px 40px rgba(0,0,0,0.15)}
+
+/* TELA 1 - FOTO NO FUNDO + ENVELOPE VERDE IGUAL AO PRINT - TAMANHO NORMAL */
+.envelope{
+  position:absolute; top:0; left:0; width:100%; height:100%; z-index:100;
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  transition:transform 0.8s cubic-bezier(.77,0,.175,1); cursor:pointer; overflow:hidden;
+}
+/* FOTO DO CASAL NO FUNDO */
+.envelope::before{
+  content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+  background-image: url('IMG_9865.jpeg');
+  background-size:cover; background-position:center top;
+  filter: blur(2.5px) brightness(0.9);
+  z-index:-2;
+}
+/* VÉU VERDE POR CIMA DA FOTO */
+.envelope::after{
+  content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+  background: rgba(122,140,107,0.82);
+  z-index:-1;
+}
+/* ENVELOPE VERDE IGUAL AO PRINT - TAMANHO NORMAL */
+.envelope-verde{
+  width:92%; max-width:340px; height:520px;
+  background: linear-gradient(180deg, #8a9c7b 0%, #7a8c6b 50%, #6b7d5d 100%);
+  border-radius:8px; position:relative;
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+/* DOBRINHAS DO ENVELOPE IGUAL NO VÍDEO */
+.envelope-verde::before{
+  content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+  background: 
+    linear-gradient(32deg, transparent 49%, rgba(0,0,0,0.07) 49.5%, rgba(0,0,0,0.07) 50%, transparent 50.5%),
+    linear-gradient(-32deg, transparent 49%, rgba(0,0,0,0.07) 49.5%, rgba(0,0,0,0.07) 50%, transparent 50.5%);
+  border-radius:8px;
+}
+.wax{
+  width:88px; height:88px; border-radius:50%; z-index:2;
+  background:radial-gradient(circle at 35% 30%, #f6e6a6 0%, #d4b45a 40%, #b89330 100%);
+  display:flex; justify-content:center; align-items:center;
+  font-family:'Great Vibes'; font-size:26px; color:#5a4010;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3), inset 0 2px 3px rgba(255,255,255,0.8);
+  border:2px solid #c9a84c;
+}
+.texto-toque{margin-top:22px; z-index:2; font-family:'Great Vibes'; font-size:17px; color:rgba(0,0,0,0.5); text-align:center; font-style:italic; line-height:1.2}
+.dots{margin-top:18px; display:flex; gap:6px; z-index:2}
+.dots span{width:5px; height:5px; border-radius:50%; background:rgba(0,0,0,0.2)}
+.dots span.active{background:rgba(0,0,0,0.45); width:14px; border-radius:10px}
+.envelope.open{transform:translateY(-100%)}
+
+/* RESTO DO CONVITE */
+.carrossel-container{width:100%; overflow:hidden; background:var(--bege); padding:8px 0}
+.carrossel-track{display:flex; gap:8px; animation: scrollLeft 20s linear infinite; width:max-content}
+.carrossel-track img{width:250px; height:320px; object-fit:cover; flex-shrink:0; border-radius:3px; border:2px solid white}
+@keyframes scrollLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.fundo-nome{background:var(--bege-escuro); padding:32px 20px; text-align:center; position:relative; border-top:1px solid white; border-bottom:1px solid white}
+.fundo-nome h2{letter-spacing:6px; font-size:21px; color:#4a3a2a; font-weight:300}
+.data-vertical{position:absolute; right:8px; top:50%; transform:translateY(-50%) rotate(90deg); letter-spacing:4px; font-size:12px; color:var(--verde)}
+.programacao, .emola-section, .rsvp-section{background:white; margin:12px; padding:18px; border-radius:8px; border:1px solid #e8ddd0}
+.prog-title{font-family:'Great Vibes'; font-size:26px; color:var(--verde); text-align:center; margin-bottom:10px}
+.timeline{padding-left:26px; border-left:2px solid var(--bege-escuro)}
+.item{position:relative; margin-bottom:12px} .item::before{content:''; position:absolute; left:-32px; top:4px; width:10px; height:10px; background:var(--verde); border-radius:50%; border:2px solid white; box-shadow:0 0 0 2px var(--verde)}
+.item .hora{font-weight:600; color:var(--verde); font-size:12px} .item .desc{font-size:13px}
+.countdown{display:flex; gap:7px; margin:15px 12px} .box{flex:1; border:1px solid var(--verde); background:white; padding:9px 0; text-align:center; border-radius:6px} .box b{color:var(--verde); font-size:18px} .box span{font-size:9px}
+.emola-num{background:var(--bege); padding:12px; border-radius:6px; font-size:18px; font-weight:600; color:var(--verde); text-align:center; margin:10px 0; letter-spacing:2px; border:1px dashed var(--verde)}
+.barra-container{margin:10px 0; background:var(--bege); border-radius:10px; height:12px; overflow:hidden; border:1px solid #e0d5c5} .barra{height:100%; width:68%; background:var(--verde)}
+.input-group{margin:10px 0} .input-group label{font-size:10px; letter-spacing:1px; text-transform:uppercase; display:block; margin-bottom:4px}
+.input-group input, .input-group select{width:100%; padding:10px; border:1px solid #d1c2b0; background:#fdfbf7; border-radius:4px}
+.radio-group{display:flex; gap:6px} .radio-btn{flex:1; padding:9px; border:1px solid var(--verde); text-align:center; cursor:pointer; border-radius:4px; font-size:12px} .radio-btn.active{background:var(--verde); color:white}
+.btn{width:100%; padding:12px; background:var(--verde); color:white; border:none; letter-spacing:1px; border-radius:4px; cursor:pointer; margin-top:8px; font-size:13px}
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- TELA 1 - FOTO NO FUNDO + ENVELOPE VERDE TAMANHO NORMAL -->
+  <div class="envelope" id="envelope" onclick="this.classList.add('open')">
+    <div class="envelope-verde">
+      <div class="wax">T&E</div>
+      <div class="texto-toque">Toque no Brasão<br>para abrir o convite</div>
+      <div class="dots"><span class="active"></span><span></span></div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div style="text-align:center; padding:18px 0 10px; font-family:'Great Vibes'; font-size:36px; color:var(--verde)">Save the Date</div>
+
+    <div class="carrossel-container">
+      <div class="carrossel-track">
+        <img src="IMG_9865.jpeg"><img src="IMG_9866.jpeg"><img src="IMG_9864.jpeg">
+        <img src="IMG_9865.jpeg"><img src="IMG_9866.jpeg"><img src="IMG_9864.jpeg">
+      </div>
+    </div>
+
+    <div class="fundo-nome"><div class="data-vertical">20 04 27</div><h2>THAIS & EDILSON</h2></div>
+
+    <div class="carrossel-container">
+      <div class="carrossel-track" style="animation-direction:reverse; animation-duration:22s">
+        <img src="IMG_9864.jpeg"><img src="IMG_9865.jpeg"><img src="IMG_9866.jpeg">
+        <img src="IMG_9864.jpeg"><img src="IMG_9865.jpeg"><img src="IMG_9866.jpeg">
+      </div>
+    </div>
+
+    <div class="programacao">
+      <div class="prog-title">Programação do Dia</div>
+      <div class="timeline">
+        <div class="item"><div class="hora">16:00 - CHEGADA</div><div class="desc">Recepção dos convidados</div></div>
+        <div class="item"><div class="hora">16:30 - CERIMÓNIA</div><div class="desc">Celebração do nosso amor</div></div>
+        <div class="item"><div class="hora">18:00 - COQUETEL</div><div class="desc">Fotos e brindes</div></div>
+        <div class="item"><div class="hora">19:30 - FESTA</div><div class="desc">Jantar e dança</div></div>
+      </div>
+    </div>
+
+    <div class="countdown">
+      <div class="box"><b id="d">0</b><span>DIAS</span></div>
+      <div class="box"><b id="h">0</b><span>HORAS</span></div>
+      <div class="box"><b id="m">0</b><span>MIN</span></div>
+      <div class="box"><b id="s">0</b><span>SEG</span></div>
+    </div>
+
+    <div class="emola-section">
+      <div class="prog-title">Presente via eMola</div>
+      <p style="font-size:12px; text-align:center">Se desejar nos presentear:</p>
+      <div class="emola-num">82 123 4567<br><span style="font-size:11px">THAIS & EDILSON</span></div>
+      <div style="display:flex; gap:6px">
+        <button class="btn" style="background:white; color:var(--verde); border:1px solid var(--verde)" onclick="navigator.clipboard.writeText('821234567'); alert('Número copiado!')">COPIAR NÚMERO</button>
+        <button class="btn" onclick="window.open('https://wa.me/258821234567')">COMPROVATIVO</button>
+      </div>
+    </div>
+
+    <div class="rsvp-section">
+      <div class="prog-title">Confirmar Presença</div>
+      <p style="text-align:center; font-size:10px; letter-spacing:2px; color:var(--verde)">68% JÁ CONFIRMARAM</p>
+      <div class="barra-container"><div class="barra" id="barra"></div></div>
+      <div class="input-group"><label>Seu Nome</label><input type="text" id="nome" placeholder="Ana Silva"></div>
+      <div class="input-group"><label>Vai estar presente?</label><div class="radio-group"><div class="radio-btn active" id="btnSim" onclick="setP('Sim')">SIM</div><div class="radio-btn" id="btnNao" onclick="setP('Não')">NÃO</div></div></div>
+      <div class="input-group"><label>Quantos convidados?</label><select id="qtd"><option value="1">1 - Só eu</option><option value="2">2 pessoas</option><option value="3">3 pessoas</option><option value="4">4 pessoas</option><option value="5">5 pessoas</option></select></div>
+      <button class="btn" onclick="confirmar()">CONFIRMAR PRESENÇA</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let pres='Sim'; function setP(v){pres=v; document.getElementById('btnSim').classList.toggle('active',v==='Sim'); document.getElementById('btnNao').classList.toggle('active',v==='Não');}
+function confirmar(){const n=document.getElementById('nome').value; if(!n){alert('Digite seu nome');return;} const q=document.getElementById('qtd').value; const t=`Olá Thais & Edilson!%0A*Confirmação*%0ANome:${n}%0APresença:${pres}%0AConvidados:${q}`; window.open(`https://wa.me/258821234567?text=${t}`,'_blank'); document.getElementById('barra').style.width='75%';}
+const target=new Date("2027-04-20T00:00:00").getTime(); setInterval(()=>{const diff=target-Date.now(); document.getElementById('d').innerText=Math.floor(diff/86400000); document.getElementById('h').innerText=Math.floor((diff%86400000)/3600000); document.getElementById('m').innerText=Math.floor((diff%3600000)/60000); document.getElementById('s').innerText=Math.floor((diff%60000)/1000);},1000)
+</script>
+</body>
+</html>
